@@ -31,7 +31,35 @@ class Word(models.Model):
 
 class PartofSpeech(models.Model):
     part_of_speech = models.CharField(max_length=50)
-    slug = models.CharField(max_length=2)
+    slug = models.SlugField()
+
+class Person(models.Model):
+    person = models.CharField(max_length=10)
+    slug = models.SlugField()
+
+class Number(models.Model):
+    number = models.CharField(max_length=10)
+    slug = models.SlugField()
+
+class Gender(models.Model):
+    gender = models.CharField(max_length=10)
+    slug = models.SlugField()
+
+class Case(models.Model):
+    case = models.CharField(max_length=10)
+    slug = models.SlugField()
+
+class Tense(models.Model):
+    tense = models.CharField(max_length=15)
+    slug = models.SlugField()
+
+class mood(models.Model):
+    mood = models.CharField(max_length=10)
+    slug = models.SlugField()
+
+class Voice(models.Model):
+    voice = models.CharField(max_length=10)
+    slug = models.SlugField()
 
 # A parsing is comprised of
 # - the word
@@ -43,4 +71,10 @@ class Parsing(models.Model):
     word = models.ForeignKey(Word)
     lemma = models.ForeignKey(Lemma)
     part_of_speech = models.ForeignKey(PartofSpeech)
-
+    person = models.ForeignKey(Person)
+    number = models.ForeignKey(Number)
+    gender = models.ForeignKey(Gender)
+    case = models.ForeignKey(Case)
+    tense = models.ForeignKey(Tense)
+    mood = models.ForeignKey(Mood)
+    voice = models.ForeignKey(Voice)
