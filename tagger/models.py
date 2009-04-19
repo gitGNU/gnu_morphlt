@@ -17,59 +17,59 @@
 
 from django.db import models
 
-# Need a database of lemmas
+# Lemmas
 class Lemma(models.Model):
     lemma = models.CharField(max_length=50)
 
-# Words are inflected lemmas
+# Words - e.g. lexical forms
+class Word(model.model):
+    word = models.CharField(max_length=50)
+    lemma = models.ForeinKey(Lemma)
+
+# Tokens are inflected words
 # Correspond to exactly one lemma
-class Word(models.Model):
-    # Bind words to lemmas? There might be words which have the same form but different roots
+class Token(models.Model):
+    # Bind tokens to lemmas? There might be tokens which have the same form but different roots
     # e.g. "ear of corn" v. human "ear"
     # lemma = models.ForeignKey(Lemma)
-    word = models.CharField(max_length=50)
+    token = models.CharField(max_length=50)
 
 class PartofSpeech(models.Model):
     part_of_speech = models.CharField(max_length=50)
-    slug = models.SlugField()
+    slug = models.SlugField(max_length=2)
 
 class Person(models.Model):
     person = models.CharField(max_length=10)
-    slug = models.SlugField()
+    slug = models.SlugField(max_length=2)
 
 class Number(models.Model):
     number = models.CharField(max_length=10)
-    slug = models.SlugField()
+    slug = models.SlugField(max_length=2)
 
 class Gender(models.Model):
     gender = models.CharField(max_length=10)
-    slug = models.SlugField()
+    slug = models.SlugField(max_length=2)
 
 class Case(models.Model):
     case = models.CharField(max_length=10)
-    slug = models.SlugField()
+    slug = models.SlugField(max_length=2)
 
 class Tense(models.Model):
     tense = models.CharField(max_length=15)
-    slug = models.SlugField()
+    slug = models.SlugField(max_length=2)
 
 class mood(models.Model):
     mood = models.CharField(max_length=10)
-    slug = models.SlugField()
+    slug = models.SlugField(max_length=2)
 
 class Voice(models.Model):
     voice = models.CharField(max_length=10)
-    slug = models.SlugField()
+    slug = models.SlugField(max_length=2)
 
-# A parsing is comprised of
-# - the word
-# - the lemma (or root)
-# - part of speech
-# - etc.
-# TODO: Finish the parsing schema
+# A parsing is comprised of all of the above
 class Parsing(models.Model):
+    token = models.ForeignKey(Token)
     word = models.ForeignKey(Word)
-    lemma = models.ForeignKey(Lemma)
     part_of_speech = models.ForeignKey(PartofSpeech)
     person = models.ForeignKey(Person)
     number = models.ForeignKey(Number)

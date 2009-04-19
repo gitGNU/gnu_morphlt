@@ -1,3 +1,6 @@
+2009-04-19 N. Dan Smith (nathan@ndansmith.net)
+	* tagger/models.py Continued refinement of parsing schema
+	
 2009-04-15 N. Dan Smith (nathan@ndansmith.net)
 	* Ported to nongnu
 
