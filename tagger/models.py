@@ -1,6 +1,6 @@
 # morphlt is a tool for creating morphological tag databases.
 #
-# Copyright 2009 by Nathan Smith (nathan@ndansmith.net) <http://ndansmith.net/>
+# Copyright 2009 by Nathan Smith (nathan@nathansmith.me)
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
